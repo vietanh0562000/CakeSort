@@ -14,6 +14,8 @@ public class NavBarItem : MonoBehaviour
     public Transform lowPosition;
     [SerializeField] Transform iconTrs;
     UnityAction navBarCallBack;
+    [SerializeField] Image activeImg;
+    [SerializeField] Image inactiveImg;
 
     void Start()
     {
@@ -32,10 +34,14 @@ public class NavBarItem : MonoBehaviour
 
     public void OnSelect()
     {
+        activeImg.gameObject.SetActive(true);
+        inactiveImg.gameObject.SetActive(false);
         iconTrs.DOScale(1.45f, 0.3f).SetEase(Ease.InOutBack);
     }
     public void OnDeselect()
     {
+        activeImg.gameObject.SetActive(false);
+        inactiveImg.gameObject.SetActive(true);
         iconTrs.DOScale(1, 0.25f).SetEase(Ease.OutBack);
     }
 }

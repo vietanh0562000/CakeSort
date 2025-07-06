@@ -11,8 +11,6 @@ public class PanelSelectReward : UIPanel
 {
     [SerializeField] List<RewardCard> rewardCards;
     [SerializeField] Button panelCloseBtn;
-    [SerializeField] Button closeBtn;
-    [SerializeField] Button extraAdsBtn;
     [SerializeField] int selectedCardId;
     List<ItemData> rewards = new();
     [SerializeField] List<ParticleImage> rewardEffect;
@@ -29,9 +27,7 @@ public class PanelSelectReward : UIPanel
     {
         panelType = UIPanelType.PanelSelectReward;
         base.Awake();
-        panelCloseBtn.onClick.AddListener(ClosePanel);
-        closeBtn.onClick.AddListener(ClosePanel);
-        extraAdsBtn.onClick.AddListener(GetExtraByAds);
+        panelCloseBtn.onClick.AddListener(ClosePanel); 
     }
 
     private void OnEnable()
@@ -61,8 +57,6 @@ public class PanelSelectReward : UIPanel
             }
         }
         panelCloseBtn.gameObject.SetActive(false);
-        closeBtn.transform.localScale = Vector3.zero;
-        extraAdsBtn.transform.localScale = Vector3.zero;
     }
 
     public void OnSelectCard(int cardId)
@@ -85,11 +79,6 @@ public class PanelSelectReward : UIPanel
         {
             panelCloseBtn.gameObject.SetActive(true);
             UIManager.instance.ShowPanelHint(rewards[0].ItemType);
-        }
-        else
-        {
-            closeBtn.transform.DOScale(1, 0.25f).SetEase(Ease.OutBack);
-            extraAdsBtn.transform.DOScale(1, 0.25f).SetEase(Ease.OutBack);
         }
     }
 
@@ -137,8 +126,6 @@ public class PanelSelectReward : UIPanel
             }
                 
         }
-        closeBtn.transform.DOScale(0, 0.25f).SetEase(Ease.InBack);
-        extraAdsBtn.transform.DOScale(0, 0.25f).SetEase(Ease.InBack);
     }
 
     public void ItemToBag()

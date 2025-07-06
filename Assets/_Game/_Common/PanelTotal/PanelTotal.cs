@@ -19,7 +19,6 @@ public class PanelTotal : UIPanel
     [SerializeField] Button settingBtn;
     [SerializeField] Button dailyBtn;
     [SerializeField] Button dailyQuestBtn;
-    [SerializeField] Button spinBtn;
     [SerializeField] Button decorBtn;
     [SerializeField] Button mainGameNavBtn;
     [SerializeField] Button bakeryNavBtn;
@@ -47,7 +46,6 @@ public class PanelTotal : UIPanel
     [SerializeField] GameObject backGround;
     [SerializeField] GameObject functinBar;
     [SerializeField] GameObject dailyNoti;
-    [SerializeField] GameObject spinNoti;
     [SerializeField] GameObject settingNoti;
     [SerializeField] GameObject bakeryNoti;
     [SerializeField] GameObject questNoti;
@@ -71,7 +69,6 @@ public class PanelTotal : UIPanel
     public void CheckNoti()
     {
         dailyNoti.SetActive(ProfileManager.Instance.playerData.playerResourseSave.IsHasDailyReward());
-        spinNoti.SetActive(ProfileManager.Instance.playerData.playerResourseSave.IsHasFreeSpin());
         questNoti.SetActive(ProfileManager.Instance.playerData.questDataSave.CheckShowNoticeQuest());
         //settingNoti.SetActive(ProfileManager.Instance.playerData.cakeSaveData.HasCakeUpgradeable() &&
         //    GameManager.Instance.playing);
@@ -157,7 +154,6 @@ public class PanelTotal : UIPanel
         settingBtn.onClick.AddListener(ShowPanelSetting);
         dailyBtn.onClick.AddListener(ShowPanelDailyReward);
         dailyQuestBtn.onClick.AddListener(ShowPanelDailyQuest);
-        spinBtn.onClick.AddListener(ShowPanelSpin);
         decorBtn.onClick.AddListener(ShowPanelTest);
         mainGameNavBtn.onClick.AddListener(() => {
             GameManager.Instance.audioManager.PlaySoundEffect(SoundId.SFX_UIButton);
@@ -255,12 +251,7 @@ public class PanelTotal : UIPanel
         GameManager.Instance.audioManager.PlaySoundEffect(SoundId.SFX_UIButton);
         UIAnimationController.BtnAnimZoomBasic(dailyQuestBtn.transform, .1f, UIManager.instance.ShowPanelDailyQuest);
     }
-
-    void ShowPanelSpin()
-    {
-        GameManager.Instance.audioManager.PlaySoundEffect(SoundId.SFX_UIButton);
-        UIAnimationController.BtnAnimZoomBasic(spinBtn.transform, .1f, UIManager.instance.ShowPanelSpin);
-    }
+    
     void ShowPanelTest()
     {
         GameManager.Instance.audioManager.PlaySoundEffect(SoundId.SFX_UIButton);
