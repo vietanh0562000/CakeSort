@@ -42,8 +42,13 @@ public class IAPPack : MonoBehaviour
 
     private void Start()
     {
+        shopPack = ProfileManager.Instance.dataConfig.shopDataConfig.GetShopPack(packageId);
         buyBtn.onClick.AddListener(OnBuyPack);
-        priceTxt.text = "$9.99";
+        if(priceTxt != null)
+        {
+            //priceTxt.text = "$" + shopPack.defaultPrice.ToString();
+            SetPrice();
+        }
     }
 
     void OnBuyPack()
