@@ -14,25 +14,23 @@ public class MyIAPManager : MonoBehaviour, IStoreListener {
     private IStoreController m_StoreController;
     private IExtensionProvider m_StoreExtensionProvider;
     public static MyIAPManager instance;
-    public const string product_noads = "remove_ads";
-
-    public const string salePack1 = "pack1";
-    public const string salePack2 = "pack2";
-    public const string piggyPack = "piggy_pack";
-    public const string PackHammer = "pack_hammer";
-    public const string PackFillUp = "pack_fillup";
-    public const string PackReRoll = "pack_reroll";
-    public const string PackMoney1 = "pack_money1";
-    public const string PackMoney2 = "pack_money2";
-    public const string PackMoney3 = "pack_money3";
-    public const string PackMoney4 = "pack_money4";
-    public const string PackMoney5 = "pack_money5";
-    public const string PackMoney6 = "pack_money6";
+    public const string salePack1 = "com.mergecake.pack1";
+    public const string salePack2 = "com.mergecake.pack2";
+    public const string piggyPack = "com.mergecake.piggy_pack";
+    public const string PackHammer = "com.mergecake.pack_hammer";
+    public const string PackFillUp = "com.mergecake.pack_fillup";
+    public const string PackReRoll = "com.mergecake.pack_reroll";
+    public const string PackMoney1 = "com.mergecake.pack_money1";
+    public const string PackMoney2 = "com.mergecake.pack_money2";
+    public const string PackMoney3 = "com.mergecake.pack_money3";
+    public const string PackMoney4 = "com.mergecake.pack_money4";
+    public const string PackMoney5 = "com.mergecake.pack_money5";
+    public const string PackMoney6 = "com.mergecake.pack_money6";
 
     UnityAction buyFailed, buySuccess;
     void Awake() {
         if (instance == null) {
-            instance = this;
+            instance = this;    
             DontDestroyOnLoad(gameObject);
         }
 
@@ -42,16 +40,6 @@ public class MyIAPManager : MonoBehaviour, IStoreListener {
             // Begin to configure our connection to Purchasing
             InitializePurchasing();
         }
-    }
-    public void CheckNonComsumePack() {
-        if (m_StoreController == null) return;
-        Product product = m_StoreController.products.WithID(product_noads);
-        if (product != null && product.hasReceipt) {
-            ItemData item = new ItemData();
-            item.ItemType = ItemType.NoAds;
-            item.amount = 0;
-            ProfileManager.Instance.playerData.playerResourseSave.AddItem(item);
-        }   
     }
 
     public void InitializePurchasing() {
@@ -70,7 +58,6 @@ public class MyIAPManager : MonoBehaviour, IStoreListener {
         builder.AddProduct(PackMoney4, ProductType.Consumable);
         builder.AddProduct(PackMoney5, ProductType.Consumable);
         builder.AddProduct(PackMoney6, ProductType.Consumable);
-        builder.AddProduct(product_noads, ProductType.Consumable);
         // and this class' instance. Expect a response either in OnInitialized or OnInitializeFailed.
         UnityPurchasing.Initialize(this, builder);
     }
@@ -90,7 +77,6 @@ public class MyIAPManager : MonoBehaviour, IStoreListener {
     public void OnInitialized(IStoreController controller, IExtensionProvider extensions) {
         this.m_StoreController = controller;
         this.m_StoreExtensionProvider = extensions;
-        CheckNonComsumePack();
     }
     public void OnInitializeFailed(InitializationFailureReason error) {
         // Purchasing set-up has not succeeded. Check error for reason. Consider sharing this reason with the user.
