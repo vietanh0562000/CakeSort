@@ -90,8 +90,6 @@ public class UIManager : MonoBehaviour {
         ingameDebugConsole.SetActive(ProfileManager.Instance.IsShowDebug());
         ShowPanelTotal();
         ShowPanelLoading();
-        UnityEngine.iOS.Device.RequestStoreReview();
-
     }
 
     public bool isDoneFirstLoadPanel = false;
