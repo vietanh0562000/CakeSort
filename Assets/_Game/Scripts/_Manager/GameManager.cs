@@ -306,7 +306,7 @@ public class GameManager : Singleton<GameManager>
         {
             case OfferID.None:
                 break;
-            case OfferID.pack1:
+            case OfferID.com_mergecake_pack1:
                 rewardItems.Clear();
                 ProfileManager.Instance.playerData.playerResourseSave.ClearPiggySave();
                 ItemData itemData = new ItemData();
@@ -315,8 +315,8 @@ public class GameManager : Singleton<GameManager>
                 rewardItems.Add(itemData);
                 CollectItemReward(rewardItems);
                 break;
-            case OfferID.piggy_pack:
-                ShopPack shopPack = ProfileManager.Instance.dataConfig.shopDataConfig.GetShopPack(OfferID.piggy_pack);
+            case OfferID.com_mergecake_piggy_pack:
+                ShopPack shopPack = ProfileManager.Instance.dataConfig.shopDataConfig.GetShopPack(OfferID.com_mergecake_piggy_pack);
                 if(shopPack != null)
                 {
                     GetItemRewards(shopPack.rewards);

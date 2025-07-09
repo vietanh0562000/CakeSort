@@ -14,18 +14,18 @@ public class MyIAPManager : MonoBehaviour, IStoreListener {
     private IStoreController m_StoreController;
     private IExtensionProvider m_StoreExtensionProvider;
     public static MyIAPManager instance;
-    public const string salePack1 = "com.mergecake.pack1";
-    public const string salePack2 = "com.mergecake.pack2";
-    public const string piggyPack = "com.mergecake.piggy_pack";
-    public const string PackHammer = "com.mergecake.pack_hammer";
-    public const string PackFillUp = "com.mergecake.pack_fillup";
-    public const string PackReRoll = "com.mergecake.pack_reroll";
-    public const string PackMoney1 = "com.mergecake.pack_money1";
-    public const string PackMoney2 = "com.mergecake.pack_money2";
-    public const string PackMoney3 = "com.mergecake.pack_money3";
-    public const string PackMoney4 = "com.mergecake.pack_money4";
-    public const string PackMoney5 = "com.mergecake.pack_money5";
-    public const string PackMoney6 = "com.mergecake.pack_money6";
+    public const string salePack1 = "com_mergecake_pack1";
+    public const string salePack2 = "com_mergecake_pack2";
+    public const string piggyPack = "com_mergecake_piggy_pack";
+    public const string PackHammer = "com_mergecake_pack_hammer";
+    public const string PackFillUp = "com_mergecake_pack_fillup";
+    public const string PackReRoll = "com_mergecake_pack_reroll";
+    public const string PackMoney1 = "com_mergecake_pack_money1";
+    public const string PackMoney2 = "com_mergecake_pack_money2";
+    public const string PackMoney3 = "com_mergecake_pack_money3";
+    public const string PackMoney4 = "com_mergecake_pack_money4";
+    public const string PackMoney5 = "com_mergecake_pack_money5";
+    public const string PackMoney6 = "com_mergecake_pack_money6";
 
     UnityAction buyFailed, buySuccess;
     void Awake() {
@@ -194,6 +194,7 @@ public class MyIAPManager : MonoBehaviour, IStoreListener {
 //        OnExecutePurchase(productId);
 //#endif
     }
+    
     public string GetProductPriceFromStore(string id) {
         if (m_StoreController != null && m_StoreController.products != null) {
             if (m_StoreController.products.WithID(id) == null) return "";

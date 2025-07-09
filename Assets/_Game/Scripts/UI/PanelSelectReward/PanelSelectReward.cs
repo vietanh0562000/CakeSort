@@ -74,10 +74,9 @@ public class PanelSelectReward : UIPanel
     }
     void ShowClose()
     {
-        
+        ShowClosePanel();
         if (ProfileManager.Instance.playerData.playerResourseSave.currentLevel < 4)
         {
-            panelCloseBtn.gameObject.SetActive(true);
             UIManager.instance.ShowPanelHint(rewards[0].ItemType);
         }
     }
